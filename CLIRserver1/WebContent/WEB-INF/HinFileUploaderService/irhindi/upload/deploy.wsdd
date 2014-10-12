@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from HinFileUploaderService WSDL service -->
+
+  <service name="HinFileUploader" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://upload.irhindi"/>
+      <parameter name="wsdlServiceElement" value="HinFileUploaderService"/>
+      <parameter name="schemaQualified" value="http://upload.irhindi"/>
+      <parameter name="wsdlServicePort" value="HinFileUploader"/>
+      <parameter name="className" value="irhindi.upload.HinFileUploader"/>
+      <parameter name="wsdlPortType" value="HinFileUploader"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://upload.irhindi" xmlns:retNS="http://upload.irhindi" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="fileUpload" qname="operNS:fileUpload" returnQName="retNS:fileUploadReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://upload.irhindi" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:myFile" type="tns:base64Binary"/>
+        <parameter xmlns:pns="http://upload.irhindi" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:filename" type="tns:string"/>
+        <parameter xmlns:pns="http://upload.irhindi" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:error" type="tns:string"/>
+        <parameter xmlns:pns="http://upload.irhindi" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:query" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="fileUpload"/>
+
+  </service>
+</deployment>

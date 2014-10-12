@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/Tesseract/ghost4j-0.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/Tesseract/jai_imageio.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/Tesseract/jna.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/Tesseract/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/Tesseract/tess4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/microsoft-translator-java-api-0.6.2-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/stanford-ner-2014-01-04/stanford-ner.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/stanford-ner-2014-01-04/stanford-ner-3.3.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/stanford-ner-2014-01-04/stanford-ner-3.3.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/stanford-ner-2014-01-04/stanford-ner-2014-01-04.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp/workspace/CLIRserverfi/jars/stanford-ner-2014-01-04"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

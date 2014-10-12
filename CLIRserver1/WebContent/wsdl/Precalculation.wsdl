@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://server.CLIR" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://server.CLIR" xmlns:intf="http://server.CLIR" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://server.CLIR" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="doit">
+    <complexType/>
+   </element>
+   <element name="doitResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="doitResponse">
+
+      <wsdl:part element="impl:doitResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="doitRequest">
+
+      <wsdl:part element="impl:doit" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Precalculation">
+
+      <wsdl:operation name="doit">
+
+         <wsdl:input message="impl:doitRequest" name="doitRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:doitResponse" name="doitResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PrecalculationSoapBinding" type="impl:Precalculation">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="doit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="doitRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="doitResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PrecalculationService">
+
+      <wsdl:port binding="impl:PrecalculationSoapBinding" name="Precalculation">
+
+         <wsdlsoap:address location="http://localhost:13080/CLIRserver1/services/Precalculation"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

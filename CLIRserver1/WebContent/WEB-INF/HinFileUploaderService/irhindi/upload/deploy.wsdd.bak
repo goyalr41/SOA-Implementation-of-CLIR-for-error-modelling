@@ -1,0 +1,32 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from HinFileUploaderService WSDL service -->
+
+  <service name="HinFileUploader" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://upload.irhindi"/>
+      <parameter name="wsdlServiceElement" value="HinFileUploaderService"/>
+      <parameter name="schemaQualified" value="http://upload.irhindi"/>
+      <parameter name="wsdlServicePort" value="HinFileUploader"/>
+      <parameter name="className" value="irhindi.upload.HinFileUploaderSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="HinFileUploader"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="fileUpload" qname="operNS:fileUpload" xmlns:operNS="http://upload.irhindi" returnQName="retNS:fileUploadReturn" xmlns:retNS="http://upload.irhindi" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:myFile" xmlns:pns="http://upload.irhindi" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:filename" xmlns:pns="http://upload.irhindi" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:error" xmlns:pns="http://upload.irhindi" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:query" xmlns:pns="http://upload.irhindi" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="fileUpload"/>
+
+  </service>
+</deployment>

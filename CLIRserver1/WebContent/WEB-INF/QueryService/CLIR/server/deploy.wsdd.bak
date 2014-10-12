@@ -1,0 +1,31 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from QueryService WSDL service -->
+
+  <service name="Query" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://server.CLIR"/>
+      <parameter name="wsdlServiceElement" value="QueryService"/>
+      <parameter name="schemaQualified" value="http://server.CLIR"/>
+      <parameter name="wsdlServicePort" value="Query"/>
+      <parameter name="className" value="CLIR.server.QuerySoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Query"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="query" qname="operNS:query" xmlns:operNS="http://server.CLIR" returnQName="retNS:queryReturn" xmlns:retNS="http://server.CLIR" returnType="rtns:base64Binary" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:data" xmlns:pns="http://server.CLIR" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lang1" xmlns:pns="http://server.CLIR" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:trans" xmlns:pns="http://server.CLIR" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="query"/>
+
+  </service>
+</deployment>

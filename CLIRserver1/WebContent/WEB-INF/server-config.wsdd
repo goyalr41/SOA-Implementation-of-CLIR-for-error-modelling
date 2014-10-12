@@ -1,0 +1,110 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\hp\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\CLIRserver1\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="HinFileUploader" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="fileUpload" qname="ns1:fileUpload" returnQName="ns1:fileUploadReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://upload.irhindi" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:myFile" type="xsd:base64Binary"/>
+   <ns2:parameter qname="ns1:filename" type="xsd:string"/>
+   <ns2:parameter qname="ns1:error" type="xsd:string"/>
+   <ns2:parameter qname="ns1:query" type="xsd:int"/>
+  </ns2:operation>
+  <ns1:parameter name="allowedMethods" value="fileUpload"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="HinFileUploader"/>
+  <ns1:parameter name="className" value="irhindi.upload.HinFileUploader"/>
+  <ns1:parameter name="wsdlServicePort" value="HinFileUploader"/>
+  <ns1:parameter name="schemaQualified" value="http://upload.irhindi"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://upload.irhindi"/>
+  <ns1:parameter name="wsdlServiceElement" value="HinFileUploaderService"/>
+ </ns1:service>
+ <ns1:service name="Query" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="query" qname="ns2:query" returnQName="ns2:queryReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns2="http://server.CLIR" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:data" type="xsd:string"/>
+   <ns1:parameter qname="ns2:lang1" type="xsd:string"/>
+   <ns1:parameter qname="ns2:trans" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="query"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Query"/>
+  <ns1:parameter name="className" value="CLIR.server.Query"/>
+  <ns1:parameter name="wsdlServicePort" value="Query"/>
+  <ns1:parameter name="schemaQualified" value="http://server.CLIR"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://server.CLIR"/>
+  <ns1:parameter name="wsdlServiceElement" value="QueryService"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="EnFileUploader" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="fileUpload" qname="ns3:fileUpload" returnQName="ns3:fileUploadReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://upload.irenglish" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:myFile" type="xsd:base64Binary"/>
+   <ns1:parameter qname="ns3:filename" type="xsd:string"/>
+   <ns1:parameter qname="ns3:error" type="xsd:string"/>
+   <ns1:parameter qname="ns3:query" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="fileUpload"/>
+  <ns1:parameter name="wsdlPortType" value="EnFileUploader"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://upload.irenglish"/>
+  <ns1:parameter name="wsdlServicePort" value="EnFileUploader"/>
+  <ns1:parameter name="className" value="irenglish.upload.EnFileUploader"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://upload.irenglish"/>
+  <ns1:parameter name="wsdlServiceElement" value="EnFileUploaderService"/>
+ </ns1:service>
+ <ns1:service name="Precalculation" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="doit" qname="ns4:doit" soapAction="" xmlns:ns4="http://server.CLIR"/>
+  <ns1:parameter name="allowedMethods" value="doit"/>
+  <ns1:parameter name="wsdlPortType" value="Precalculation"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://server.CLIR"/>
+  <ns1:parameter name="wsdlServicePort" value="Precalculation"/>
+  <ns1:parameter name="className" value="CLIR.server.Precalculation"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://server.CLIR"/>
+  <ns1:parameter name="wsdlServiceElement" value="PrecalculationService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
